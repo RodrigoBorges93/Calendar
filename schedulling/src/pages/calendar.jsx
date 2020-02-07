@@ -10,7 +10,7 @@ const localizer = momentLocalizer(moment)
 function Calendario () {
 
         const [events, setEvents] = useState([]);
-        const [user, setUser] = useState();
+        const [user, setUser] = useState('Rodrigo');
 
         useEffect(() => {
             async function loadEvents(){
