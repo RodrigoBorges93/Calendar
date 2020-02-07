@@ -4,6 +4,7 @@ import moment from 'moment';
 import api from '../services/api';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../pages/calendar.styles.scss'
+import 'moment/locale/pt-br'
 
 const localizer = momentLocalizer(moment)
 
@@ -41,6 +42,7 @@ function Calendario () {
       })
         } }
         popup={true}
+        culture="pt-br"
     />
       </div>
       <div className='auditor'>
