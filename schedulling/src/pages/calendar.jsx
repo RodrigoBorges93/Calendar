@@ -5,6 +5,7 @@ import api from '../services/api';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../pages/calendar.styles.scss'
 import 'moment/locale/pt-br'
+import swal from 'sweetalert';
 
 const localizer = momentLocalizer(moment)
 
@@ -49,9 +50,14 @@ function Calendario () {
           title: user,
           allDay: true
       })
+      .then(swal("Dia Marcado", "O dia foi marcado, caso não seja você, clique uma vez em cima do nome e delete", "success"));
         } }
         popup={true}
         culture="pt-br"
+        onSelectEvent={(e) => {
+            api.delete(`/events/delete/${e._id}`)
+            .then(swal("Dia excluído!", "Este dia foi excluído, caso não seja você, por favor marque de novo!", "success"));
+        }}
     />
       </div>
       <div className='auditor'>
