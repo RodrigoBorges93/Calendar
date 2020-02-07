@@ -14,7 +14,7 @@ function Calendario () {
 
         useEffect(() => {
             async function loadEvents(){
-                const response = await api.get('/events');
+                const response = await api.get('/');
 
                 setEvents(response.data)
             }
