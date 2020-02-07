@@ -12,6 +12,14 @@ function Calendario () {
 
         const [events, setEvents] = useState([]);
         const [user, setUser] = useState('Rodrigo');
+        const [messages, SetMessages] = useState({
+            today: 'Hoje',
+            previous: '<',
+            next: '>',
+            month: 'Mês',
+            day: 'Dia',
+            week: 'Semana'
+        })
 
         useEffect(() => {
             async function loadEvents(){
@@ -29,6 +37,7 @@ function Calendario () {
         <Calendar
         localizer={localizer}
         events={events}
+        messages={messages}
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500 }}
