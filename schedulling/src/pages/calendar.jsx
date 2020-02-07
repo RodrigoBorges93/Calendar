@@ -50,13 +50,13 @@ function Calendario () {
           title: user,
           allDay: true
       })
-      .then(swal("Dia Marcado", "O dia foi marcado, caso não seja você, clique uma vez em cima do nome e delete", "success"));
+      .then(swal(`Dia marcado, ${user}!`, `O dia foi marcado para ${user}. Caso não seja você, clique uma vez em cima do nome e delete.`, "success"));
         } }
         popup={true}
         culture="pt-br"
         onSelectEvent={(e) => {
             api.delete(`/events/delete/${e._id}`)
-            .then(swal("Dia excluído!", "Este dia foi excluído, caso não seja você, por favor marque de novo!", "success"));
+            .then(swal(`Dia excluído, ${user}!`, `Este dia foi excluído de ${user}. Caso não seja você, por favor marque de novo no mesmo dia!`, "success"));
         }}
     />
       </div>
