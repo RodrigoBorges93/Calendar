@@ -44,14 +44,22 @@ function Calendario () {
         style={{ height: 500 }}
         selectable={true}
         onSelectSlot={(e)=> {
-        api.post('/events', {
-          start: e.start,
-          end: e.start,
-          title: user,
-          allDay: true
-      })
-      .then(swal(`Dia marcado, ${user}!`, `O dia foi marcado para ${user}. Caso não seja você, clique uma vez em cima do nome e delete.`, "success"));
-        } }
+            if (e.end.getDay() === 0){
+                swal('Dia informado é DOMINGO!', 'Não foi executada a marcação, o dia informado é um domingo!' , "error")
+            }
+            else if(e.end.getDay() === 6){
+                swal('Dia informado é SÁBADO!', 'Não foi executada a marcação, o dia informado é um sábado!' , "error")
+            }
+            else{
+                api.post('/events', {
+                    start: e.start,
+                    end: e.start,
+                    title: user,
+                    allDay: true
+            })
+                .then(swal(`Dia marcado, ${user}!`, `O dia foi marcado para ${user}. Caso não seja você, clique uma vez em cima do nome e delete.`, "success"));
+            }    
+    }}
         popup={true}
         culture="pt-br"
         onSelectEvent={(e) => {
