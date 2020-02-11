@@ -7,10 +7,10 @@ import '../pages/calendar.styles.scss'
 import 'moment/locale/pt-br'
 import swal from 'sweetalert';
 
+
 const localizer = momentLocalizer(moment)
 
 function Calendario () {
-
         const [events, setEvents] = useState([]);
         const [user, setUser] = useState('Rodrigo');
         const [messages, SetMessages] = useState({
@@ -21,6 +21,7 @@ function Calendario () {
             day: 'Dia',
             week: 'Semana'
         })
+
 
         useEffect(() => {
             async function loadEvents(){
@@ -33,7 +34,9 @@ function Calendario () {
         }, [events]);
 
         return(
+        
         <>
+
         <div className="calendar-container">
         <Calendar
         localizer={localizer}
@@ -43,7 +46,9 @@ function Calendario () {
         endAccessor="end"
         style={{ height: 500 }}
         selectable={true}
+        views={['month', 'week', 'day']}
         onSelectSlot={(e)=> {
+
             if (e.end.getDay() === 0){
                 swal('Dia informado é DOMINGO!', 'Não foi executada a marcação, o dia informado é um domingo!' , "error")
             }
@@ -59,7 +64,7 @@ function Calendario () {
             })
                 .then(swal(`Dia marcado, ${user}!`, `O dia foi marcado para ${user}. Caso não seja você, clique uma vez em cima do nome e delete.`, "success"));
             }    
-    }}
+        }}
         popup={true}
         culture="pt-br"
         onSelectEvent={(e) => {
@@ -67,6 +72,7 @@ function Calendario () {
             .then(swal(`Dia excluído, ${user}!`, `Este dia foi excluído de ${user}. Caso não seja você, por favor marque de novo no mesmo dia!`, "success"));
         }}
     />
+    
       </div>
       <div className='auditor'>
           <h1>Auditor:</h1>
@@ -84,8 +90,6 @@ function Calendario () {
             <option value="João">João</option> 
         </select>
       </div>
-
-
     </>
         )
     }
