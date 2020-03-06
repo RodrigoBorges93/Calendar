@@ -5,7 +5,6 @@ import api from '../services/api';
 import '../pages/calendar.styles.scss'
 import 'moment/locale/pt-br'
 import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css';
 import swal from 'sweetalert';
 
 
@@ -90,19 +89,19 @@ function Calendario () {
         //         .then(swal(`Dia marcado, ${user}!`, `O dia foi marcado para ${user}. Caso não seja você, clique uma vez em cima do nome e delete.`, "success"));
         //     }    
         // }}
-        onSelectSlot={(e) => {
-                user.map((usuario) => {
-                    api.post('/events', {
-                    start: e.start,
-                    end: e.start,
-                    title: usuario,
-                    allDay: true,
-                    isGoing: true,
+        // onSelectSlot={(e) => {
+        //         user.map((usuario) => {
+        //             api.post('/events', {
+        //             start: e.start,
+        //             end: e.start,
+        //             title: usuario,
+        //             allDay: true,
+        //             isGoing: true,
 
-             })
-                })
-            }
-        }
+        //      })
+        //         })
+        //     }
+        // }
         popup={true}
         culture="pt-br"
         onSelectEvent={(e) => {
