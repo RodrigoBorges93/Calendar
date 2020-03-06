@@ -1,0 +1,41 @@
+body{
+    height: 100%;
+}
+.login-page{
+    width: 100%;
+    text-align:center;
+    height: 100%;
+}
+
+.texto-principal{
+    margin-top: 20%;
+}
+
+.login-page input{
+    width: 30%;
+    height: 5vh;
+    text-align: center;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.login-page button{
+    background-color:#353b48;
+    color: #ffff;
+    border: none;
+    width: 10%;
+    height: 4vh;
+    cursor:pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .login-page button {
+    width: 50%;
+    height: 7vh;
+  }
+
+  .login-page input{
+      width: 70%;
+      height: 7vh;
+  }
+}

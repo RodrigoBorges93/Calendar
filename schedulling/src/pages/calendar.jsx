@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import  { Calendar, momentLocalizer } from 'react-big-calendar';
+import { LoginContext } from '../contexts/login.context';
+import LoginPage from '../pages/login/login';
 import moment from 'moment';
 import api from '../services/api';
 import '../pages/calendar.styles.scss'
@@ -21,6 +23,7 @@ function Calendario () {
             day: 'Dia',
             week: 'Semana'
         })
+        const[logged, setLogged] = useContext(LoginContext);
 
 
         useEffect(() => {
@@ -38,6 +41,8 @@ function Calendario () {
         
         <>
 
+        {
+        logged ?
         <div className="calendar-container">
         <Calendar
         localizer={localizer}
@@ -125,6 +130,10 @@ function Calendario () {
     />
     
       </div>
+      :
+      <LoginPage/>
+    
+    }
     </>
         )
     }
