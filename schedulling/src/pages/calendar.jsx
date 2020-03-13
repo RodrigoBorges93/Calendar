@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import  { Calendar, momentLocalizer } from 'react-big-calendar';
 import { LoginContext } from '../contexts/login.context';
+import { AreaContext } from '../contexts/area.context';
 import LoginPage from '../pages/login/login';
 import moment from 'moment';
 import api from '../services/api';
@@ -14,7 +15,17 @@ const localizer = momentLocalizer(moment)
 
 function Calendario () {
         const [events, setEvents] = useState([]);
-        const [user, setUser] = useState(['Anderson','Franklin','Israel','João','Luciano', 'Marcelo','Paulo','Rafael','Rodrigo']);
+        const [area, setArea] = useContext(AreaContext);
+        const [user, setUser] = useState(
+            // ['Anderson','Franklin','Israel','João','Luciano', 'Marcelo','Paulo','Rafael','Rodrigo']
+
+            [
+            {nome:'Anderson', area:'serv'}, {nome:'Franklin', area:'serv'}, {nome:'Israel', area:'serv'}, {nome:'João', area:'serv'}, {nome:'Luciano', area:'serv'}, {nome:'Marcelo', area:'serv'}, {nome:'Paulo', area:'serv'}, {nome:'Rafael', area:'serv'}, {nome:'Rodrigo', area:'serv'},
+            {nome:'Antonio', area:'pic'}, {nome:'Amanda', area:'pic'}, {nome:'Ronaldo', area:'pic'}, {nome:'Gustavo', area:'pic'}, {nome:'Erick', area:'pic'},
+            {nome:'Daniele', area:'neg'}, {nome:'Bruno', area:'neg'}, {nome:'Carlile', area:'neg'}, {nome:'Maicon', area:'neg'}, {nome:'João Paulo', area:'neg'}, {nome:'Mirson', area:'neg'}, {nome:'Alexandre', area:'neg'}, {nome:'Jacqueline', area:'neg'}, {nome:'Svenson', area:'neg'}, {nome:'Luciana', area:'neg'}, {nome:'Rodrigo', area:'neg'}, {nome:'Fernando', area:'neg'},
+            {nome:'Renata Cabral', area:'corp'}, {nome:'Renata Noronha', area:'corp'}, {nome:'Ricardo', area:'corp'}, {nome:'Marco', area:'corp'}, {nome:'Penellope', area:'corp'}, {nome:'Louise', area:'corp'}, {nome:'Henrique', area:'corp'}, {nome:'Pedro', area:'corp'}, {nome:'Elizeu', area:'corp'}, {nome:'Cristina', area:'corp'}, {nome:'Itamar', area:'corp'}
+            ]
+        )
         const [messages, SetMessages] = useState({
             today: 'Hoje',
             previous: '<',
@@ -28,7 +39,7 @@ function Calendario () {
 
         useEffect(() => {
             async function loadEvents(){
-                const response = await api.get('/');
+                const response = await api.get(`/${area}`);
 
                 setEvents(response.data)
             }
@@ -94,19 +105,20 @@ function Calendario () {
         //         .then(swal(`Dia marcado, ${user}!`, `O dia foi marcado para ${user}. Caso não seja você, clique uma vez em cima do nome e delete.`, "success"));
         //     }    
         // }}
-        // onSelectSlot={(e) => {
-        //         user.map((usuario) => {
-        //             api.post('/events', {
-        //             start: e.start,
-        //             end: e.start,
-        //             title: usuario,
-        //             allDay: true,
-        //             isGoing: true,
+    //     onSelectSlot={(e) => {
+    //             user.forEach((usuario) => {
+    //                 api.post('/events', {
+    //                 start: e.start,
+    //                 end: e.start,
+    //                 title: usuario.nome,
+    //                 allDay: true,
+    //                 isGoing: true,
+    //                 area: usuario.area,
 
-        //      })
-        //         })
-        //     }
-        // }
+    //          })
+    //             })
+    //     }
+    // }
         popup={true}
         culture="pt-br"
         onSelectEvent={(e) => {
