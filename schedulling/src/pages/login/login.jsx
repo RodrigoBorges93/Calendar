@@ -12,24 +12,24 @@ export default function LoginPage(){
 
         switch(senha){
             case 'audinserv':
-            setLogged(true)
-            setArea('serv')
-            break
+                setLogged(true)
+                setArea('serv')
+                break
 
             case 'audincorp':
-            setLogged(true)
-            setArea('corp')
-            break
+                setLogged(true)
+                setArea('corp')
+                break
 
             case 'audinneg':
-            setLogged(true)
-            setArea('neg')
-            break
+                setLogged(true)
+                setArea('neg')
+                break
 
             case 'audinpic':
-            setLogged(true)
-            setArea('pic')
-            break
+                setLogged(true)
+                setArea('pic')
+                break
             
             default:
             alert('Senha informada não confere, tente novamente')

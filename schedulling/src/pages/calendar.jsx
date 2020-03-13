@@ -61,7 +61,7 @@ function Calendario () {
         eventPropGetter={
             (event, start, end, isSelected) => {
             let newStyle = {
-                backgroundColor: "lightgrey",
+                backgroundColor: "#fffa65",
                 color: 'black',
                 borderRadius: "0px",
                 border: "none"
